@@ -71,7 +71,9 @@
             gliloader.pathRoot = pathRoot;
             if (useDebug) {
                 // In debug mode load all the scripts
-                gliloader.load(["host", "replay", "ui"]);
+                gliloader.load(["host", "replay", "ui"], function(){
+                    if (window["gliLoaded"]) window["gliLoaded"].call();
+                });
             }
         };
         script.onreadystatechange = function () {
